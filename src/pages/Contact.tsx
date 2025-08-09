@@ -44,8 +44,12 @@ const Contact = () => {
             />
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
-            <p>Email: hello@dailyplate.app</p>
-            <p>Phone: +91 98765 43210</p>
+            <p>
+              Email: <a href="mailto:hello@dailyplate.app" className="underline hover:text-foreground">hello@dailyplate.app</a>
+            </p>
+            <p>
+              Phone: <a href="tel:+919876543210" className="underline hover:text-foreground">+91 98765 43210</a>
+            </p>
           </div>
         </div>
       </div>

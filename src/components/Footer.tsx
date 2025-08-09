@@ -21,12 +21,16 @@ const Footer = () => {
         <div>
           <h4 className="font-semibold mb-3">Contact</h4>
           <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +91 98765 43210</li>
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@dailyplate.app</li>
+            <li>
+              <a href="tel:+919876543210" className="flex items-center gap-2 hover:underline"><Phone className="h-4 w-4" /> +91 98765 43210</a>
+            </li>
+            <li>
+              <a href="mailto:hello@dailyplate.app" className="flex items-center gap-2 hover:underline"><Mail className="h-4 w-4" /> hello@dailyplate.app</a>
+            </li>
           </ul>
           <div className="flex gap-3 mt-4 text-muted-foreground">
-            <a href="#" aria-label="Instagram" className="hover:text-foreground"><Instagram className="h-5 w-5" /></a>
-            <a href="#" aria-label="Facebook" className="hover:text-foreground"><Facebook className="h-5 w-5" /></a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-foreground"><Instagram className="h-5 w-5" /></a>
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="hover:text-foreground"><Facebook className="h-5 w-5" /></a>
           </div>
         </div>
       </div>
