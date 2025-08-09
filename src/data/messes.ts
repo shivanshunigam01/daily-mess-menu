@@ -1,0 +1,55 @@
+import { Mess } from "@/components/MessCard";
+
+export const messes: Mess[] = [
+  {
+    id: "sunrise",
+    name: "Sunrise Mess",
+    location: "Campus Road, North Block",
+    rating: 4.6,
+    isVeg: true,
+    phone: "+919876543210",
+    image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1600&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps",
+    menu: {
+      breakfast: ["Masala Dosa", "Poha", "Idli & Sambar"],
+      lunch: ["Veg Thali", "Paneer Butter Masala", "Jeera Rice"],
+      snacks: ["Samosa", "Cutlet", "Tea"],
+      dinner: ["Dal Tadka", "Chapati", "Veg Pulao"],
+    },
+    specials: ["Paneer Kathi Roll", "Mango Lassi"],
+  },
+  {
+    id: "taste-town",
+    name: "Taste Town",
+    location: "South Avenue, Tech Park",
+    rating: 4.3,
+    isVeg: false,
+    phone: "+919123456789",
+    image: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=1600&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps",
+    menu: {
+      breakfast: ["Omelette Sandwich", "Upma", "Tea"],
+      lunch: ["Chicken Curry", "Veg Pulao", "Curd"],
+      snacks: ["Pakora", "Coffee"],
+      dinner: ["Butter Chicken", "Naan", "Salad"],
+    },
+    specials: ["Tandoori Chicken", "Gulab Jamun"],
+  },
+  {
+    id: "green-bowl",
+    name: "Green Bowl",
+    location: "Central Plaza, Hostel Lane",
+    rating: 4.8,
+    isVeg: true,
+    phone: "+918765432109",
+    image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1600&auto=format&fit=crop",
+    mapsLink: "https://www.google.com/maps",
+    menu: {
+      breakfast: ["Paratha & Curd", "Sprout Salad"],
+      lunch: ["Rajma Chawal", "Aloo Gobi"],
+      snacks: ["Fruit Bowl", "Milkshake"],
+      dinner: ["Veg Biryani", "Raita"],
+    },
+    specials: ["Veggie Burrito Bowl"],
+  },
+];
