@@ -25,31 +25,81 @@ export type Mess = {
     dinner: string[];
   };
   specials?: string[];
+  priceRange?: string;
+  serviceTypes?: string[];
 };
 
 export default function MessCard({ mess }: { mess: Mess }) {
   return (
-    <Card className="overflow-hidden hover:shadow-elevated transition-shadow">
-      <img src={mess.image} alt={`${mess.name} mess photo`} className="h-40 w-full object-cover" loading="lazy" />
-      <CardHeader className="pb-0">
-        <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold leading-tight">
-            <Link to={`/messes/${mess.id}`}>{mess.name}</Link>
-          </h3>
-          <div className="flex items-center gap-1 text-amber-500"><Star className="h-4 w-4" /><span className="text-sm font-medium">{mess.rating.toFixed(1)}</span></div>
+    <Link to={`/messes/${mess.id}`}>
+      <Card className="group overflow-hidden hover:shadow-elegant smooth-transition hover-scale h-full">
+        <div className="relative">
+          <img 
+            src={mess.image} 
+            alt={`${mess.name} mess photo`} 
+            className="h-48 w-full object-cover group-hover:scale-105 smooth-transition" 
+            loading="lazy" 
+          />
+          <Badge 
+            className="absolute top-3 right-3 shadow-soft" 
+            variant={mess.isVeg ? "secondary" : "destructive"}
+          >
+            {mess.isVeg ? "🌱 Veg" : "🍖 Non-Veg"}
+          </Badge>
+          {mess.priceRange && (
+            <div className="absolute top-3 left-3 bg-primary/90 text-primary-foreground text-xs font-semibold px-2 py-1 rounded-full">
+              ₹{mess.priceRange}
+            </div>
+          )}
         </div>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1"><MapPin className="h-4 w-4" />{mess.location}</div>
-        <div className="mt-2">
-          <Badge variant={mess.isVeg ? "secondary" : "default"}>{mess.isVeg ? "Vegetarian" : "Veg & Non-veg"}</Badge>
-        </div>
-      </CardHeader>
-      <CardContent className="text-sm text-muted-foreground">
-        <div className="mt-3 line-clamp-2">Today: {mess.specials?.[0] ?? mess.menu.breakfast[0]}</div>
-      </CardContent>
-      <CardFooter className="flex items-center justify-between gap-2">
-        <Button variant="secondary" asChild className="gap-2"><a href={`tel:${mess.phone}`} aria-label={`Call ${mess.name}`}><Phone className="h-4 w-4" />Call Mess</a></Button>
-        <Button variant="outline" asChild className="gap-2"><a href={mess.mapsLink} target="_blank" rel="noreferrer"><MapPin className="h-4 w-4" />Get Directions</a></Button>
-      </CardFooter>
-    </Card>
+        <CardContent className="p-5 flex flex-col h-full">
+          <div className="flex-1">
+            <h3 className="font-heading font-bold text-lg mb-2 group-hover:text-primary smooth-transition">
+              {mess.name}
+            </h3>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+              <MapPin className="w-4 h-4 text-primary/70" />
+              <span className="truncate">{mess.location}</span>
+            </div>
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-1">
+                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                <span className="text-sm font-semibold">{mess.rating.toFixed(1)}</span>
+                <span className="text-xs text-muted-foreground">/5</span>
+              </div>
+              {mess.serviceTypes && (
+                <div className="flex gap-1">
+                  {mess.serviceTypes.slice(0, 2).map((type) => (
+                    <Badge key={type} variant="outline" className="text-xs">
+                      {type}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="bg-muted/50 rounded-lg p-3 mb-4">
+              <p className="text-sm font-medium text-primary mb-1">Today's Special</p>
+              <p className="text-sm text-foreground">
+                {mess.specials?.[0] ?? mess.menu.breakfast[0]}
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-2 mt-auto" onClick={(e) => e.preventDefault()}>
+            <Button variant="outline" size="sm" className="flex-1 hover-lift" asChild>
+              <a href={`tel:${mess.phone}`} onClick={(e) => e.stopPropagation()}>
+                <Phone className="w-4 h-4 mr-1" />
+                Call
+              </a>
+            </Button>
+            <Button variant="outline" size="sm" className="flex-1 hover-lift" asChild>
+              <a href={mess.mapsLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                <MapPin className="w-4 h-4 mr-1" />
+                Directions
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }

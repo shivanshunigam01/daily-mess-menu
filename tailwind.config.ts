@@ -120,7 +120,14 @@ export default {
 			},
 			boxShadow: {
 				glow: '0 0 0 3px hsl(var(--accent) / 0.35), 0 10px 30px -10px hsl(var(--primary) / 0.25)',
-				elevated: '0 10px 30px -12px rgba(0,0,0,0.2)'
+				elevated: '0 10px 30px -12px rgba(0,0,0,0.2)',
+				elegant: 'var(--shadow-elegant)',
+				soft: 'var(--shadow-soft)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card': 'var(--gradient-card)'
 			}
 		}
 	},
